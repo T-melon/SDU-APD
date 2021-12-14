@@ -1,68 +1,52 @@
 package com.wzt.tapm.util;
 
-import com.alibaba.fastjson.JSONObject;
+import lombok.*;
+import lombok.experimental.Tolerate;
 
-public class Result {
+import java.io.Serializable;
+
+@AllArgsConstructor
+@ToString
+public class Result implements Serializable {
+
+    @NonNull
+    @Getter
+    @Setter
     private Integer code;
+
+    @NonNull
+    @Getter
+    @Setter
     private String message;
+
+    @Getter
+    @Setter
     private Object data;
 
-    public Result(Integer code, String message, Object data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
+    @Tolerate
+    public Result() {
     }
 
-    public static Result success(String message) {
-        return new Result(0, message, null);
+    public static Result success() {
+        return new Result(ResultCodeEnum.SUCCESS.code, ResultCodeEnum.SUCCESS.message, null);
     }
 
-    public static Result success(String message, Object data) {
-        return new Result(0, message, data);
+    public static Result success(Object data) {
+        return new Result(ResultCodeEnum.SUCCESS.code, ResultCodeEnum.SUCCESS.message, data);
     }
 
     public static Result data(Object data) {
-        return success("success", data);
+        return success(data);
     }
 
-    public static Result error(String message) {
-        return new Result(-1, message, null);
+    public static Result getResult(ResultCodeEnum resultCodeEnum) {
+        return getResult(resultCodeEnum, null);
     }
 
-    public static Result error(String message, Object data) {
-        return new Result(-1, message, data);
+    public static Result getResult(ResultCodeEnum resultCodeEnum, Object data) {
+        int code = resultCodeEnum.code;
+        String message = resultCodeEnum.message;
+        return new Result(code, message, data);
     }
 
-    public static Result error(int code, String message) {
-        return new Result(code, message, null);
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return JSONObject.toJSONString(this);
-    }
 }
