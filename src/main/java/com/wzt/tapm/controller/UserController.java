@@ -6,12 +6,15 @@ import com.wzt.tapm.util.Result;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * /login, /register
  */
 @RestController
 public class UserController {
 
+    @Resource
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -27,4 +30,5 @@ public class UserController {
     public Result register(UserBean userBean){
         return userService.register(userBean);
     }
+
 }

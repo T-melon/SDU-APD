@@ -9,17 +9,25 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- *
+ * Basic user methods(register, login)
  */
 @Service
 public class UserService {
 
     @Resource
     private final UserMapper userMapper;
+    private final TokenService tokenService;
 
-    public UserService(UserMapper userMapper) {
+    public UserService(UserMapper userMapper, TokenService tokenService) {
         this.userMapper = userMapper;
+        this.tokenService = tokenService;
     }
+
+
+    public UserBean login(String account){
+        return userMapper.selectUserByAccount(account);
+    }
+
 
     public Result login(UserBean userBean){
 
@@ -31,12 +39,12 @@ public class UserService {
         if(account == null||password == null){
             result = Result.getResult(ResultCodeEnum.LOGIN_LACK);
         }else{
-            UserBean userBean1 = userMapper.selectUserByAccount(account);
-
+            UserBean userBean1 = login(account);
             if(userBean1 == null){
                 result = Result.getResult(ResultCodeEnum.LOGIN_ERROR);
             }else if(userBean1.getPassword().equals(password)){
-                result = Result.getResult(ResultCodeEnum.SUCCESS);
+                String token = tokenService.getToken(userBean1);
+                result = Result.getResult(ResultCodeEnum.SUCCESS,token);
             }else{
                 result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
             }

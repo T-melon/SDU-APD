@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzt.tapm.mapper.DemandMapper">
+
+    <insert id="insertDemand" parameterType="com.wzt.tapm.entity.DemandBean">
+        insert into demand_info(title,project,ctime,ddl,cer,doer,priority,mode) values (#{title},#{project},#{ctime},#{ddl},#{cer},#{doer},#{priority},#{mode})
+    </insert>
+
+</mapper>

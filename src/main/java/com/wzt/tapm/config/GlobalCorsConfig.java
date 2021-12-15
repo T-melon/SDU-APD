@@ -1,4 +1,4 @@
-package com.wzt.tapm;
+package com.wzt.tapm.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
