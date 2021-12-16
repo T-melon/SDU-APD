@@ -6,6 +6,6 @@
     </select>
 
     <insert id="insertUser" parameterType="com.wzt.tapm.entity.UserBean">
-        insert into user_info(`username``,`password``,`email`,`identity`) values (#{username},#{password},#{email},#{identity})
+        insert into user_info(`username`,`password`,`email`,`identity`) values (#{username},#{password},#{email},#{identity})
     </insert>
 </mapper>

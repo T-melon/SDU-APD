@@ -35,6 +35,7 @@ public class UserService {
 
         String username = userBean.getUsername();
         String password = userBean.getPassword();
+        int identity = userBean.getIdentity();
 
         if(username == null||password == null){
             result = Result.getResult(ResultCodeEnum.LOGIN_LACK);
@@ -42,7 +43,7 @@ public class UserService {
             UserBean userBean1 = login(username);
             if(userBean1 == null){
                 result = Result.getResult(ResultCodeEnum.LOGIN_ERROR);
-            }else if(userBean1.getPassword().equals(password)){
+            }else if(userBean1.getPassword().equals(password) && userBean1.getIdentity() == identity){
                 String token = tokenService.getToken(userBean1);
                 result = Result.getResult(ResultCodeEnum.SUCCESS,token);
             }else{
