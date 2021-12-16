@@ -31,7 +31,7 @@ public class DemandService {
 
         String title = demandBean.getTitle();
         String project = demandBean.getProject();
-        Date ddl = demandBean.getDdl();
+        String ddl = demandBean.getDdl();
         String doer = demandBean.getDoer();
 
 
@@ -39,18 +39,22 @@ public class DemandService {
             result = Result.getResult(ResultCodeEnum.DEMAND_LACK);
         }else{
 
-            demandBean.setCtime(new Date());
+            demandBean.setCtime(new Date().toString());
 
 
+            if(token != null){
+                demandBean.setCer(JWT.decode(token).getAudience().get(0));
 
-            demandBean.setCer(JWT.decode(token).getAudience().get(0));
+                int num = demandMapper.insertDemand(demandBean);
 
-            int num = demandMapper.insertDemand(demandBean);
+                if(num>0){
+                    result = Result.getResult(ResultCodeEnum.SUCCESS);
+                }else{
+                    result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+                }
 
-            if(num>0){
-                result = Result.getResult(ResultCodeEnum.SUCCESS);
             }else{
-                result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+                result = Result.getResult(ResultCodeEnum.FETCH_TOKEN_FAILED);
             }
 
         }

@@ -7,7 +7,7 @@ public enum ResultCodeEnum implements Serializable {
 //    common code
     SUCCESS(0,"success"),
     UNKNOWN_REASON(-1,"unknown error"),
-//    FETCH_TOKEN_FAILED(401,"token does not exist"),
+    FETCH_TOKEN_FAILED(401,"can not fetch token"),
 
 //    login/register code
     LOGIN_ERROR(11,"incorrect account or password"),

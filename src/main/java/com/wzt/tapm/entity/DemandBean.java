@@ -32,12 +32,12 @@ public class DemandBean implements Serializable {
     @NonNull
     @Getter
     @Setter
-    private Date ctime;
+    private String ctime;
 
     @NonNull
     @Getter
     @Setter
-    private Date ddl;
+    private String ddl;
 
     @NonNull
     @Getter
@@ -59,7 +59,7 @@ public class DemandBean implements Serializable {
     @Setter
     private int mode;
 
-    public DemandBean(@NonNull String title, @NonNull String project, @NonNull Date ctime, @NonNull Date ddl, @NonNull String cer, @NonNull String doer, @NonNull int priority, @NonNull int mode) {
+    public DemandBean(@NonNull String title, @NonNull String project, @NonNull String ctime, @NonNull String ddl, @NonNull String cer, @NonNull String doer, @NonNull int priority, @NonNull int mode) {
         this.title = title;
         this.project = project;
         this.ctime = ctime;
@@ -70,7 +70,7 @@ public class DemandBean implements Serializable {
         this.mode = mode;
     }
 
-    public DemandBean(@NonNull String title, @NonNull String project, @NonNull Date ddl, @NonNull String doer, @NonNull int priority) {
+    public DemandBean(@NonNull String title, @NonNull String project, @NonNull String ddl, @NonNull String doer, @NonNull int priority) {
         this.title = title;
         this.project = project;
         this.ddl = ddl;
