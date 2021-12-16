@@ -137,7 +137,7 @@ SDU scrum platform
 
 | 传出参数 |   类型    |   说明   |
 | :------: | :-------: | :------: |
-| nameList | ArrayList | username |
+| nameList | List | username |
 
 ```json
 {
