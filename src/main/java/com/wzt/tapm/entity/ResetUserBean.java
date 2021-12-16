@@ -6,11 +6,11 @@ import lombok.experimental.Tolerate;
 import java.io.Serializable;
 
 /**
- * Basic user info(username, password, email, identity)
+ * Reset password
  */
 @AllArgsConstructor
 @ToString
-public class UserBean implements Serializable {
+public class ResetUserBean implements Serializable {
 
     @NonNull
     @Getter
@@ -20,20 +20,15 @@ public class UserBean implements Serializable {
     @NonNull
     @Getter
     @Setter
-    private String password;
+    private String old_password;
 
     @NonNull
     @Getter
     @Setter
-    private String email;
-
-    @NonNull
-    @Getter
-    @Setter
-    private int identity;
+    private String new_password;
 
     @Tolerate
-    public UserBean() {
+    public ResetUserBean() {
     }
 
 }

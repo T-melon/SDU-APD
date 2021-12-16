@@ -6,6 +6,19 @@
     </select>
 
     <insert id="insertUser" parameterType="com.wzt.tapm.entity.UserBean">
-        insert into user_info(`username``,`password``,`email`,`identity`) values (#{username},#{password},#{email},#{identity})
+        insert into user_info(username,password,email,`identity`) values (#{username},#{password},#{email},#{identity})
     </insert>
+
+    <update id="updatePasswordByUsername" parameterType="String">
+        update user_info set password = #{new_password} where username = #{username}
+    </update>
+
+    <select id="selectUserInfoByUsername" resultType="map" parameterType="String">
+        SELECT username,email,`identity`  FROM user_info where username = #{username}
+    </select>
+
+    <select id="selectTechnicalName" resultType="map">
+        SELECT username FROM user_info where `identity` = 2
+    </select>
+
 </mapper>

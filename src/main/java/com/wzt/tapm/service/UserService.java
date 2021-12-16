@@ -1,5 +1,7 @@
 package com.wzt.tapm.service;
 
+import com.auth0.jwt.JWT;
+import com.wzt.tapm.entity.ResetUserBean;
 import com.wzt.tapm.entity.UserBean;
 import com.wzt.tapm.mapper.UserMapper;
 import com.wzt.tapm.util.Result;
@@ -8,8 +10,13 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+import java.util.Map;
+
+import static com.wzt.tapm.controller.DemandController.token;
+
 /**
- * Basic user methods(register, login)
+ * Basic user methods(register, login, resetPw, getSelfInfo, getTechnicalName)
  */
 @Service
 public class UserService {
@@ -35,14 +42,16 @@ public class UserService {
 
         String username = userBean.getUsername();
         String password = userBean.getPassword();
+        int identity = userBean.getIdentity();
 
         if(username == null||password == null){
             result = Result.getResult(ResultCodeEnum.LOGIN_LACK);
         }else{
+
             UserBean userBean1 = login(username);
             if(userBean1 == null){
                 result = Result.getResult(ResultCodeEnum.LOGIN_ERROR);
-            }else if(userBean1.getPassword().equals(password)){
+            }else if(userBean1.getPassword().equals(password) && userBean1.getIdentity() == identity){
                 String token = tokenService.getToken(userBean1);
                 result = Result.getResult(ResultCodeEnum.SUCCESS,token);
             }else{
@@ -51,6 +60,7 @@ public class UserService {
 
         }
         return result;
+
     }
 
     public Result register(UserBean userBean){
@@ -78,6 +88,69 @@ public class UserService {
             }
 
         }
+
+        return result;
+
+    }
+
+    public Result resetPw(ResetUserBean resetUserBean){
+
+        Result result;
+
+        String username = resetUserBean.getUsername();
+        String old_password = resetUserBean.getOld_password();
+        String new_password = resetUserBean.getNew_password();
+
+        if(username == null||old_password == null||new_password == null){
+            result = Result.getResult(ResultCodeEnum.REGISTER_LACK);
+        }else if(old_password.length()>=20){
+            result = Result.getResult(ResultCodeEnum.REGISTER_LENGTH_ERROR);
+        }else{
+
+            UserBean userBean1 = login(username);
+            if(userBean1 == null){
+                result = Result.getResult(ResultCodeEnum.LOGIN_ERROR);
+            }else if(userBean1.getPassword().equals(old_password)){
+                int num = userMapper.updatePasswordByUsername(new_password,username);
+                if(num>0){
+                    result = Result.getResult(ResultCodeEnum.SUCCESS);
+                }else{
+                    result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+                }
+            }else{
+                result = Result.getResult(ResultCodeEnum.LOGIN_ERROR);
+            }
+
+        }
+
+        return result;
+
+    }
+
+    public Result getSelfInfo(){
+
+        Result result;
+        String username = JWT.decode(token).getAudience().get(0);
+
+        Map<Integer,Object> map = userMapper.selectUserInfoByUsername(username);
+
+            result = Result.getResult(ResultCodeEnum.SUCCESS,map);
+
+        return result;
+
+    }
+
+    public Result getTechnicalName(){
+
+        Result result;
+        List<String> list = userMapper.selectTechnicalName();
+
+//        JSONArray jsonArray = JSONArray.fromObject(list);
+//        result = Result.getResult(ResultCodeEnum.SUCCESS,jsonArray.toString());
+
+        result = Result.getResult(ResultCodeEnum.SUCCESS,list);
+
+//        result = Result.getResult(ResultCodeEnum.SUCCESS,JSON.toJSON(list).toString());
         return result;
     }
 

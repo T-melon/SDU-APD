@@ -9,7 +9,7 @@ public enum ResultCodeEnum implements Serializable {
     UNKNOWN_REASON(-1,"unknown error"),
     FETCH_TOKEN_FAILED(401,"can not fetch token"),
 
-//    login/register code
+//    login/register/resetPw/getSelfInfo/getTechnicalName code
     LOGIN_ERROR(11,"incorrect account or password"),
     LOGIN_LACK(12,"blank account or password"),
     REGISTER_EXIST(13,"account already exists"),
