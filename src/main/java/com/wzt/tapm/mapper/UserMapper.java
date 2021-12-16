@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserMapper {
-    UserBean selectUserByAccount(String account);
+    UserBean selectUserByUsername(String username);
     int insertUser(UserBean userBean);
 }

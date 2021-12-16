@@ -24,8 +24,8 @@ public class UserService {
     }
 
 
-    public UserBean login(String account){
-        return userMapper.selectUserByAccount(account);
+    public UserBean login(String username){
+        return userMapper.selectUserByUsername(username);
     }
 
 
@@ -33,13 +33,13 @@ public class UserService {
 
         Result result;
 
-        String account = userBean.getAccount();
+        String username = userBean.getUsername();
         String password = userBean.getPassword();
 
-        if(account == null||password == null){
+        if(username == null||password == null){
             result = Result.getResult(ResultCodeEnum.LOGIN_LACK);
         }else{
-            UserBean userBean1 = login(account);
+            UserBean userBean1 = login(username);
             if(userBean1 == null){
                 result = Result.getResult(ResultCodeEnum.LOGIN_ERROR);
             }else if(userBean1.getPassword().equals(password)){
@@ -57,15 +57,15 @@ public class UserService {
 
         Result result;
 
-        String account = userBean.getAccount();
+        String username = userBean.getUsername();
         String password = userBean.getPassword();
         String email = userBean.getEmail();
 
-        if(account == null||password == null||email == null){
+        if(username == null||password == null||email == null){
             result = Result.getResult(ResultCodeEnum.REGISTER_LACK);
-        }else if(account.length()>=20||password.length()>=20){
+        }else if(username.length()>=20||password.length()>=20){
             result = Result.getResult(ResultCodeEnum.REGISTER_LENGTH_ERROR);
-        }else if(userMapper.selectUserByAccount(account) != null){
+        }else if(userMapper.selectUserByUsername(username) != null){
             result = Result.getResult(ResultCodeEnum.REGISTER_EXIST);
         }else{
 

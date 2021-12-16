@@ -15,7 +15,7 @@ public class UserBean implements Serializable {
     @NonNull
     @Getter
     @Setter
-    private String account;
+    private String username;
 
     @NonNull
     @Getter
@@ -30,7 +30,7 @@ public class UserBean implements Serializable {
     @NonNull
     @Getter
     @Setter
-    private int status;
+    private int identity;
 
     @Tolerate
     public UserBean() {
