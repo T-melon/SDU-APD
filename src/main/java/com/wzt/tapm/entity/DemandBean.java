@@ -4,10 +4,9 @@ import lombok.*;
 import lombok.experimental.Tolerate;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * Basic demand info(, , , )
+ * Basic demand info
  */
 
 @AllArgsConstructor

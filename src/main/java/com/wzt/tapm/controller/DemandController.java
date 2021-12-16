@@ -31,7 +31,6 @@ public class DemandController {
         return demandService.createDemand(demandBean);
     }
 
-
     public static String token;
 
     @GetMapping("/getToken")
