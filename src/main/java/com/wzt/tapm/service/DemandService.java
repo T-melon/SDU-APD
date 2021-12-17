@@ -13,7 +13,7 @@ import java.util.*;
 import static com.wzt.tapm.interceptor.AuthenticationInterceptor.token;
 
 /**
- * Basic demand methods(createDemand, getDoingDemand, )
+ * Basic demand methods(createDemand, getDoingDemand, getDoneDemand, getDemandNum, setAddress, setDocu, getDocu)
  */
 @Service
 public class DemandService {
