@@ -310,18 +310,53 @@ SDU scrum platform
 }
 ```
 
-##### 2.7需求状态改变（创建log方法）发布邮件
-![image](https://github.com/T-melon/TAPM/blob/master/%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2.png)
+##### 2.7需求状态改变（创建log）
 
-共1-2，1-3，2-4，2-5，2-6，4-5，4-6七种变化可能
+共1-2，1-3，2-4，2-5，2-6，4-5，4-6七种操作对应url
 
-传一个新的状态参数（2，3，4，5，6）和demand_id过来
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/from1to2 |  POST  |
 
-我就能知道该干嘛了
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/from1to3 |  POST  |
 
-具体表现在一定要写log的commit，还有发什么样子的邮件
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/from2to4 |  POST  |
 
-正在写
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/from2to5 |  POST  |
+
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/from2to6 |  POST  |
+
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/from4to5 |  POST  |
+
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/from4to6 |  POST  |
+
+| 传入参数  |  类型  | 是否可空 |  说明   |
+| :-------: | :----: | :------: | :-----: |
+|  commit   | String |    否    | log内容 |
+| demand_id |  int   |    否    | 需求id  |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": null
+}
+```
+
+##### 2.8发布邮件
+
 #### 三、Log管理
 
 ##### 3.1展示全部log
