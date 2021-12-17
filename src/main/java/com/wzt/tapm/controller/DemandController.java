@@ -32,16 +32,13 @@ public class DemandController {
         return demandService.createDemand(demandBean);
     }
 
-    public static String token;
-
-    @UserLoginToken
-    @GetMapping("/getToken")
-    public void fetchToken(@RequestHeader("token") String Token) {
-        token = Token;
-    }
-
-//    因为拦截器没有写好,现在想要通过token获取用户身份需要在登陆后,请求头带着token走一下/getToken,之后就可以了
-//    而且将token设成了全局静态变量,同一时间理论上只能登陆一个用户,等晚上重写拦截器
+//    public static String token;
+//
+//    @UserLoginToken
+//    @GetMapping("/getToken")
+//    public void fetchToken(@RequestHeader("token") String Token) {
+//        token = Token;
+//    }
 
     @UserLoginToken
     @PostMapping("/demand/doing")

@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-import static com.wzt.tapm.controller.DemandController.token;
+import static com.wzt.tapm.interceptor.AuthenticationInterceptor.token;
 
 /**
  * Basic user methods(register, login, resetPw, getSelfInfo, getTechnicalName)

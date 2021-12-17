@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.*;
 
-import static com.wzt.tapm.controller.DemandController.token;
+import static com.wzt.tapm.interceptor.AuthenticationInterceptor.token;
 
 /**
  * Basic demand methods(createDemand, getDoingDemand, )
