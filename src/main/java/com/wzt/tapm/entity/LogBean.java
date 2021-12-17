@@ -47,3 +47,4 @@ public class LogBean implements Serializable {
     }
 
 }
+
