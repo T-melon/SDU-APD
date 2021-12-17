@@ -1,6 +1,33 @@
 server:
   port: 8081
 spring:
+  mail:
+    host: smtp.163.com # 发件服务器
+    username: shujie_tian@163.com # 账号
+    password: YAXRVNWCUVZIBNPD # 密码(163需要授权第三方登录密码,请查看设置-客户端授权码密码开通)
+    port: 465
+    protocol: smtp
+    default-encoding: utf-8
+    # 下面这些配置大家不用深究,主要用于配置ssl
+    properties:
+      mail:
+        imap:
+          ssl:
+            socketFactory:
+              fallback: false
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            socketFactory:
+              class: com.fintech.modules.base.util.mail.MailSSLSocketFactory
+          starttls:
+            enable: true
+            required: true
+      test-connection: false
+
+
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/tapm?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
