@@ -105,4 +105,45 @@ public class DemandController {
         return demandService.getDocu(demand_id);
     }
 
+    @UserLoginToken
+    @PostMapping("/demand/from1to2")
+    public Result from1to2(String commit,String demand_id) {
+        return demandService.from1to2(commit,demand_id);
+    }
+
+    @UserLoginToken
+    @PostMapping("/demand/from1to3")
+    public Result from1to3(String commit,String demand_id) {
+        return demandService.from1to3(commit,demand_id);
+    }
+
+    @UserLoginToken
+    @PostMapping("/demand/from2to4")
+    public Result from2to4(String commit,String demand_id) {
+        return demandService.from2to4(commit,demand_id);
+    }
+
+    @UserLoginToken
+    @PostMapping("/demand/from2to5")
+    public Result from2to5(String commit,String demand_id) {
+        return demandService.from2to5(commit,demand_id);
+    }
+
+    @UserLoginToken
+    @PostMapping("/demand/from2to6")
+    public Result from2to6(String commit,String demand_id) {
+        return demandService.from2to6(commit,demand_id);
+    }
+
+    @UserLoginToken
+    @PostMapping("/demand/from4to5")
+    public Result from4to5(String commit,String demand_id) {
+        return demandService.from4to5(commit,demand_id);
+    }
+
+    @UserLoginToken
+    @PostMapping("/demand/from4to6")
+    public Result from4to6(String commit,String demand_id) {
+        return demandService.from4to6(commit,demand_id);
+    }
 }

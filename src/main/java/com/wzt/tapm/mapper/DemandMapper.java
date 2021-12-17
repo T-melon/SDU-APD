@@ -1,6 +1,7 @@
 package com.wzt.tapm.mapper;
 
 import com.wzt.tapm.entity.DemandBean;
+import com.wzt.tapm.entity.LogBean;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,5 +24,11 @@ public interface DemandMapper {
     int updateDocu(String docu, String demand_id);
 
     String selectDocu(String demand_id);
+
+    int updateStatus(int status, int demand_id);
+    int insertLog(LogBean logBean);
+
+    String selectProject(String demand_id);
+
 }
 

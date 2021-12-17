@@ -2,6 +2,7 @@ package com.wzt.tapm.service;
 
 import com.auth0.jwt.JWT;
 import com.wzt.tapm.entity.DemandBean;
+import com.wzt.tapm.entity.LogBean;
 import com.wzt.tapm.mapper.DemandMapper;
 import com.wzt.tapm.util.Result;
 import com.wzt.tapm.util.ResultCodeEnum;
@@ -259,6 +260,153 @@ public class DemandService {
         Result result;
         String docu = demandMapper.selectDocu(demand_id);
         result = Result.getResult(ResultCodeEnum.SUCCESS,docu);
+        return result;
+    }
+
+    public Result from1to2(String commit,String demand_id){
+
+        Result result;
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
+
+        int num1 = demandMapper.updateStatus(2, Integer.parseInt(demand_id));
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
+            result = Result.getResult(ResultCodeEnum.SUCCESS);
+        }else{
+            result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+        }
+        return result;
+    }
+
+    public Result from1to3(String commit,String demand_id){
+
+        Result result;
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
+
+        int num1 = demandMapper.updateStatus(3, Integer.parseInt(demand_id));
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
+            result = Result.getResult(ResultCodeEnum.SUCCESS);
+        }else{
+            result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+        }
+        return result;
+    }
+
+    public Result from2to4(String commit,String demand_id){
+
+        Result result;
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
+
+        int num1 = demandMapper.updateStatus(4, Integer.parseInt(demand_id));
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
+            result = Result.getResult(ResultCodeEnum.SUCCESS);
+        }else{
+            result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+        }
+        return result;
+    }
+
+    public Result from2to5(String commit,String demand_id){
+
+        Result result;
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
+
+        int num1 = demandMapper.updateStatus(5, Integer.parseInt(demand_id));
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
+            result = Result.getResult(ResultCodeEnum.SUCCESS);
+        }else{
+            result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+        }
+        return result;
+    }
+
+    public Result from2to6(String commit,String demand_id){
+
+        Result result;
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
+
+        int num1 = demandMapper.updateStatus(6, Integer.parseInt(demand_id));
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
+            result = Result.getResult(ResultCodeEnum.SUCCESS);
+        }else{
+            result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+        }
+        return result;
+    }
+
+    public Result from4to5(String commit,String demand_id){
+
+        Result result;
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
+
+        int num1 = demandMapper.updateStatus(5, Integer.parseInt(demand_id));
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
+            result = Result.getResult(ResultCodeEnum.SUCCESS);
+        }else{
+            result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+        }
+        return result;
+    }
+
+    public Result from4to6(String commit,String demand_id){
+
+        Result result;
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
+
+        int num1 = demandMapper.updateStatus(6, Integer.parseInt(demand_id));
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
+            result = Result.getResult(ResultCodeEnum.SUCCESS);
+        }else{
+            result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);
+        }
         return result;
     }
 

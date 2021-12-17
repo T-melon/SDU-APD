@@ -50,4 +50,16 @@
         SELECT docu FROM demand_info where demand_id = #{demand_id}
     </select>
 
+    <update id="updateStatus" parameterType="int">
+        UPDATE demand_info set status = #{status} where demand_id = #{demand_id}
+    </update>
+
+    <insert id="insertLog" parameterType="com.wzt.tapm.entity.LogBean">
+        INSERT INTO log_info(demand_id,project,ctime,cer,`commit`) values (#{demand_id},#{project},#{ctime},#{cer},#{commit})
+    </insert>
+
+    <select id="selectProject" resultType="String" parameterType="String">
+        SELECT project FROM demand_info where demand_id = #{demand_id}
+    </select>
+
 </mapper>
