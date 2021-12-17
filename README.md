@@ -150,3 +150,174 @@ SDU scrum platform
     ]
 }
 ```
+#### 二、需求管理
+| 错误码 |        信息        |
+| :----: | :----------------: |
+|   21   | 创建需求信息不完整 |
+
+##### 2.1需求新建
+
+|      URL       | method |
+| :------------: | :----: |
+| /demand/create |  POST  |
+
+| 传入参数 |  类型  | 是否可空 |       说明       |
+| :------: | :----: | :------: | :--------------: |
+|  title   | String |    否    |     需求标题     |
+| project  | String |    否    | 需求所属项目名称 |
+|   ddl    |  Date  |    否    |     截止日期     |
+|   doer   | String |    否    |      负责人      |
+| priority |  int   |    否    |      优先级      |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": null
+}
+```
+
+##### 2.2获取个人执行中（归档）需求
+
+|          URL           | method |
+| :--------------------: | :----: |
+| /demand/doing（/done） |  POST  |
+
+|  传出参数  | 类型 |                             说明                             |
+| :--------: | :--: | :----------------------------------------------------------: |
+| demandList | List | 包括demand_id，title，project，ctime，ddl，cer，doer，priority，status，address，docu所有 |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "cer": "202000300116",
+            "demand_id": 2,
+            "doer": "test2_account",
+            "project": "项目1",
+            "ctime": "Fri Dec 17 03:29:40 CST 2021",
+            "title": "需求2",
+            "priority": 1,
+            "ddl": "Wed Dec 15 22:00:00 CST 2021",
+            "status": 2
+        },
+        {
+            "cer": "202000300116",
+            "demand_id": 4,
+            "doer": "test2_account",
+            "project": "项目1",
+            "ctime": "Fri Dec 17 03:29:54 CST 2021",
+            "title": "需求2",
+            "priority": 1,
+            "ddl": "Wed Dec 15 22:00:00 CST 2021",
+            "status": 4
+        },
+        {
+            "cer": "202000300116",
+            "demand_id": 5,
+            "doer": "test2_account",
+            "project": "项目1",
+            "ctime": "Fri Dec 17 03:34:08 CST 2021",
+            "title": "需求2",
+            "priority": 1,
+            "ddl": "Wed Dec 15 22:00:00 CST 2021",
+            "status": 4
+        }
+    ]
+}
+```
+
+##### 2.3获取不同状态需求数量
+
+|     URL     | method |
+| :---------: | :----: |
+| /demand/num |  POST  |
+
+| 传出参数 |  类型  |     说明     |
+| :------: | :----: | :----------: |
+|  numStr  | String | 见代码内注释 |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": "i1=1, i2=1, i3=0, i4=2, i5=1, i6=0"
+}
+```
+
+##### 2.4上传github地址
+
+|      URL       | method |
+| :------------: | :----: |
+| /demand/github |  POST  |
+
+| 传入参数 |  类型  | 是否可空 |      说明      |
+| :------: | :----: | :------: | :------------: |
+| address  | String |    否    | github提交地址 |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": null
+}
+```
+
+##### 2.5需求文档上传（暂时传到tomcat本地服务器，重启则全部消失）
+
+|      URL       | method |
+| :------------: | :----: |
+| /demand/upload |  POST  |
+
+|  传入参数  | 类型 | 是否可空 |   说明   |
+| :--------: | :--: | :------: | :------: |
+| uploadFile | file |    否    | 需求文档 |
+| demand_id  | int  |    否    |  需求id  |
+
+| 传出参数 |  类型  |   说明    |
+| :------: | :----: | :-------: |
+| filePath | String | 服务器url |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": "http://localhost:8081/uploadFile/1/微信图片_地缚少年花子君.png"
+}
+```
+
+##### 2.6需求文档下载
+
+|       URL        | method |
+| :--------------: | :----: |
+| /demand/download |  POST  |
+
+| 传入参数  | 类型 | 是否可空 |  说明  |
+| :-------: | :--: | :------: | :----: |
+| demand_id | int  |    否    | 需求id |
+
+| 传出参数 |  类型  |   说明    |
+| :------: | :----: | :-------: |
+| filePath | String | 服务器url |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": "http://localhost:8081/uploadFile/1/微信图片_地缚少年花子君.png"
+}
+```
+
+##### 2.7需求状态改变（创建log方法）发布邮件
+
+共1-2，1-3，2-4，2-5，2-6，4-5，4-6七种变化可能
+
+传一个新的状态参数（2，3，4，5，6）和demand_id过来
+
+我就能知道该干嘛了
+
+具体表现在一定要写log的commit，还有发什么样子的邮件
+
+正在写
