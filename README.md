@@ -321,3 +321,127 @@ SDU scrum platform
 具体表现在一定要写log的commit，还有发什么样子的邮件
 
 正在写
+#### 三、Log管理
+
+##### 3.1展示全部log
+
+|   URL    | method |
+| :------: | :----: |
+| /log/all |  POST  |
+
+| 传出参数 | 类型 |                          说明                          |
+| :------: | :--: | :----------------------------------------------------: |
+| logList  | List | 包括log_id，demand_id，project，ctime，cer，commit所有 |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "log_id": 1,
+            "cer": "202000300116",
+            "demand_id": 1,
+            "commit": "commit1",
+            "project": "项目1",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        },
+        {
+            "log_id": 2,
+            "cer": "202000300116",
+            "demand_id": 1,
+            "commit": "commit2",
+            "project": "项目1",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        },
+        {
+            "log_id": 3,
+            "cer": "test2_account",
+            "demand_id": 1,
+            "commit": "commit3",
+            "project": "项目1",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        },
+        {
+            "log_id": 4,
+            "cer": "202000300116",
+            "demand_id": 1,
+            "commit": "commit4",
+            "project": "项目2",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        }
+    ]
+}
+```
+
+##### 3.2展示个人log
+
+|    URL    | method |
+| :-------: | :----: |
+| /log/self |  POST  |
+
+| 传出参数 | 类型 |                          说明                          |
+| :------: | :--: | :----------------------------------------------------: |
+| logList  | List | 包括log_id，demand_id，project，ctime，cer，commit所有 |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "log_id": 3,
+            "cer": "test2_account",
+            "demand_id": 1,
+            "commit": "commit3",
+            "project": "项目1",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        }
+    ]
+}
+```
+
+##### 3.3展示项目log
+
+|     URL      | method |
+| :----------: | :----: |
+| /log/project |  POST  |
+
+| 传出参数 | 类型 |                          说明                          |
+| :------: | :--: | :----------------------------------------------------: |
+| logList  | List | 包括log_id，demand_id，project，ctime，cer，commit所有 |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "log_id": 1,
+            "cer": "202000300116",
+            "demand_id": 1,
+            "commit": "commit1",
+            "project": "项目1",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        },
+        {
+            "log_id": 2,
+            "cer": "202000300116",
+            "demand_id": 1,
+            "commit": "commit2",
+            "project": "项目1",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        },
+        {
+            "log_id": 3,
+            "cer": "test2_account",
+            "demand_id": 1,
+            "commit": "commit3",
+            "project": "项目1",
+            "ctime": "Wed Dec 15 22:00:00 CST 2021"
+        }
+    ]
+}
+```
+
+##### 3.4发布log（跟在2.7改变状态里）
