@@ -311,6 +311,7 @@ SDU scrum platform
 ```
 
 ##### 2.7需求状态改变（创建log方法）发布邮件
+![image](https://github.com/T-melon/TAPM/blob/master/%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2.png)
 
 共1-2，1-3，2-4，2-5，2-6，4-5，4-6七种变化可能
 
