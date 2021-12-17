@@ -3,7 +3,51 @@
 <mapper namespace="com.wzt.tapm.mapper.DemandMapper">
 
     <insert id="insertDemand" parameterType="com.wzt.tapm.entity.DemandBean">
-        insert into demand_info(title,project,ctime,ddl,cer,doer,priority,mode) values (#{title},#{project},#{ctime},#{ddl},#{cer},#{doer},#{priority},#{mode})
+        INSERT INTO demand_info(title,project,ctime,ddl,cer,doer,priority,status) values (#{title},#{project},#{ctime},#{ddl},#{cer},#{doer},#{priority},#{status})
     </insert>
+
+    <select id="selectDoingDemand" resultType="map" parameterType="String">
+        SELECT * FROM demand_info where (doer = #{username} and status = 2) or (doer = #{username} and status = 4)
+    </select>
+
+    <select id="selectDoneDemand" resultType="map" parameterType="String">
+        SELECT * FROM demand_info where (doer = #{username} and status = 5) or (doer = #{username} and status = 6)
+    </select>
+
+    <select id="select1Num" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 1
+    </select>
+
+    <select id="select2Num" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 2
+    </select>
+
+    <select id="select3Num" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 3
+    </select>
+
+    <select id="select4Num" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 4
+    </select>
+
+    <select id="select5Num" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 5
+    </select>
+
+    <select id="select6Num" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 6
+    </select>
+
+    <update id="updateAddress" parameterType="String">
+        UPDATE demand_info set address = #{address} where demand_id = #{demand_id}
+    </update>
+
+    <update id="updateDocu" parameterType="String">
+        UPDATE demand_info set docu = #{docu} where demand_id = #{demand_id}
+    </update>
+
+    <select id="selectDocu" resultType="String" parameterType="String">
+        SELECT docu FROM demand_info where demand_id = #{demand_id}
+    </select>
 
 </mapper>
