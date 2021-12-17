@@ -357,6 +357,25 @@ SDU scrum platform
 
 ##### 2.8发布邮件
 
+|      URL      | method |
+| :-----------: | :----: |
+| /demand/email |  POST  |
+
+| 传入参数 |  类型  | 是否可空 |    说明    |
+| :------: | :----: | :------: | :--------: |
+|    to    | String |    否    | 收件人邮箱 |
+| subject  | String |    否    |  邮件主题  |
+|   text   | String |    否    |  邮件内容  |
+
+```json
+{
+    "code": 0,
+    "message": "success",
+    "data": null
+}
+```
+
+
 #### 三、Log管理
 
 ##### 3.1展示全部log
