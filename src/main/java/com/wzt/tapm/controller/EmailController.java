@@ -1,7 +1,5 @@
 package com.wzt.tapm.controller;
 
-import com.wzt.tapm.entity.DemandBean;
-import com.wzt.tapm.service.EmailService;
 import com.wzt.tapm.service.EmailServiceImpl;
 import com.wzt.tapm.util.Result;
 import com.wzt.tapm.util.ResultCodeEnum;

@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * /demand/create, /demand/doing, /demand/done, /demand/num, /demand/github, /demand/upload, /demand/download
+ * /demand/create, /demand/doing, /demand/done, /demand/num, /demand/github, /demand/upload, /demand/download...
  */
 @RestController
 public class DemandController {
@@ -68,7 +68,7 @@ public class DemandController {
     @PostMapping("/demand/upload")
     public Result setDocu(@RequestParam("uploadFile") MultipartFile uploadFile, @RequestParam("demand_id") String demand_id, HttpServletRequest request) throws IOException {
         //定义上传文件存放的路径
-        String path = request.getSession().getServletContext().getRealPath("/uploadFile/");//此处为tomcat下的路径，服务重启路径会变化
+        String path = request.getSession().getServletContext().getRealPath("/uploadFile/");//此处为tomcat下的路径,服务重启路径会变化
         //定义文件在上传路径中的文件夹名称
         File folder = new File(path + demand_id);
         //检测folder是否是文件夹,不是就创建

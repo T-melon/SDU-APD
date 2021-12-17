@@ -27,18 +27,6 @@ public class Result implements Serializable {
     public Result() {
     }
 
-    public static Result success() {
-        return new Result(ResultCodeEnum.SUCCESS.code, ResultCodeEnum.SUCCESS.message, null);
-    }
-
-    public static Result success(Object data) {
-        return new Result(ResultCodeEnum.SUCCESS.code, ResultCodeEnum.SUCCESS.message, data);
-    }
-
-    public static Result data(Object data) {
-        return success(data);
-    }
-
     public static Result getResult(ResultCodeEnum resultCodeEnum) {
         return getResult(resultCodeEnum, null);
     }
