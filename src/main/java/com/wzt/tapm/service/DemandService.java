@@ -65,7 +65,13 @@ public class DemandService {
     public Result getDoingDemand(){
 
         Result result;
-        List<DemandBean> list = demandMapper.selectDoingDemand(JWT.decode(token).getAudience().get(0));
+        int identity = demandMapper.selectIdentity(JWT.decode(token).getAudience().get(0));
+        List<DemandBean> list;
+        if(identity == 1){
+            list = demandMapper.select1DoingDemand(JWT.decode(token).getAudience().get(0));
+        }else{
+            list = demandMapper.select2DoingDemand(JWT.decode(token).getAudience().get(0));
+        }
         result = Result.getResult(ResultCodeEnum.SUCCESS,list);
 
         return result;
@@ -75,7 +81,14 @@ public class DemandService {
     public Result getDoneDemand(){
 
         Result result;
-        List<DemandBean> list = demandMapper.selectDoneDemand(JWT.decode(token).getAudience().get(0));
+
+        int identity = demandMapper.selectIdentity(JWT.decode(token).getAudience().get(0));
+        List<DemandBean> list;
+        if(identity == 1){
+            list = demandMapper.select1DoneDemand(JWT.decode(token).getAudience().get(0));
+        }else{
+            list = demandMapper.select2DoneDemand(JWT.decode(token).getAudience().get(0));
+        }
         result = Result.getResult(ResultCodeEnum.SUCCESS,list);
 
         return result;

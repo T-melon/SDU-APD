@@ -9,8 +9,10 @@ import java.util.List;
 @Repository
 public interface DemandMapper {
     int insertDemand(DemandBean demandBean);
-    List<DemandBean> selectDoingDemand(String username);
-    List<DemandBean> selectDoneDemand(String username);
+    List<DemandBean> select1DoingDemand(String username);
+    List<DemandBean> select1DoneDemand(String username);
+    List<DemandBean> select2DoingDemand(String username);
+    List<DemandBean> select2DoneDemand(String username);
 
     int select1Num(String username);
     int select2Num(String username);
@@ -29,6 +31,8 @@ public interface DemandMapper {
     int insertLog(LogBean logBean);
 
     String selectProject(String demand_id);
+
+    int selectIdentity(String username);
 
 }
 

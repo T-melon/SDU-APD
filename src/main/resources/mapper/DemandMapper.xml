@@ -6,12 +6,20 @@
         INSERT INTO demand_info(title,project,ctime,ddl,cer,doer,priority,status) values (#{title},#{project},#{ctime},#{ddl},#{cer},#{doer},#{priority},#{status})
     </insert>
 
-    <select id="selectDoingDemand" resultType="map" parameterType="String">
-        SELECT * FROM demand_info where (doer = #{username} and status = 2) or (doer = #{username} and status = 4)
+    <select id="select1DoingDemand" resultType="map" parameterType="String">
+        SELECT * FROM demand_info where (cer = #{username} and status = 2) or (doer = #{username} and status = 4) or (doer = #{username} and status = 1)
     </select>
 
-    <select id="selectDoneDemand" resultType="map" parameterType="String">
-        SELECT * FROM demand_info where (doer = #{username} and status = 5) or (doer = #{username} and status = 6)
+    <select id="select1DoneDemand" resultType="map" parameterType="String">
+        SELECT * FROM demand_info where (cer = #{username} and status = 5) or (doer = #{username} and status = 6) or (doer = #{username} and status = 3)
+    </select>
+
+    <select id="select2DoingDemand" resultType="map" parameterType="String">
+        SELECT * FROM demand_info where (doer = #{username} and status = 2) or (doer = #{username} and status = 4) or (doer = #{username} and status = 1)
+    </select>
+
+    <select id="select2DoneDemand" resultType="map" parameterType="String">
+        SELECT * FROM demand_info where (doer = #{username} and status = 5) or (doer = #{username} and status = 6) or (doer = #{username} and status = 3)
     </select>
 
     <select id="select1Num" resultType="int" parameterType="String">
@@ -60,6 +68,10 @@
 
     <select id="selectProject" resultType="String" parameterType="String">
         SELECT project FROM demand_info where demand_id = #{demand_id}
+    </select>
+
+    <select id="selectIdentity" resultType="int" parameterType="String">
+        SELECT `identity` FROM user_info where username = #{username}
     </select>
 
 </mapper>
