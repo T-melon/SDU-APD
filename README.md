@@ -12,7 +12,7 @@ SDU scrum platform
 
 - 前端向服务器发送一般数据的`Content-Type`为`application/json`，若包含文件(如图片或文档)，发送数据的`Content-Type`为`multipart/form-data`
 
-- 除`login`、`register`接口外，其余请求均需使用`token`，下方具体接口内省略不写，前端将`token`放于请求头"token"进行请求
+- 除`login`、`register`等接口外，其余请求均需使用`token`，下方具体接口内省略不写，前端将`token`放于请求头"token"进行请求
 
 - 若本次请求正常，则返回`code`为0，`message`为"success"；小于0代表错误，大于0代表非错误性提示，任何请求都会返回`code`和`message`，下方接口数据中的传出参数为`data`中的讯息，某些接口没有`data`数据
 
@@ -256,6 +256,7 @@ SDU scrum platform
 | 传入参数 |  类型  | 是否可空 |      说明      |
 | :------: | :----: | :------: | :------------: |
 | address  | String |    否    | github提交地址 |
+| demand_id  | int  |    否    |  需求id  |
 
 ```json
 {
