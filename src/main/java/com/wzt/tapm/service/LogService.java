@@ -45,11 +45,11 @@ public class LogService {
 
     }
 
-    public Result ProjectLog(String project){
+    public Result DemandLog(String demand_id){
 
 
         Result result;
-        List<LogBean> list = logMapper.selectProjectLog(project);
+        List<LogBean> list = logMapper.selectDemandLog(demand_id);
         result = Result.getResult(ResultCodeEnum.SUCCESS,list);
 
         return result;

@@ -34,7 +34,7 @@ public class LogController {
 
     @UserLoginToken
     @PostMapping("/log/project")
-    public Result ProjectLog(String project) {
-        return logService.ProjectLog(project);
+    public Result ProjectLog(String demand_id) {
+        return logService.DemandLog(demand_id);
     }
 }

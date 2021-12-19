@@ -9,7 +9,7 @@
         SELECT * FROM log_info where cer = #{username}
     </select>
 
-    <select id="selectProjectLog" resultType="map" parameterType="String">
-        SELECT * FROM log_info where project = #{project}
+    <select id="selectDemandLog" resultType="map" parameterType="String">
+        SELECT * FROM log_info where demand_id = #{demand_id}
     </select>
 </mapper>

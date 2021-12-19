@@ -9,5 +9,5 @@ import java.util.List;
 public interface LogMapper {
     List<LogBean> selectAllLog();
     List<LogBean> selectSelfLog(String username);
-    List<LogBean> selectProjectLog(String project);
+    List<LogBean> selectDemandLog(String demand_id);
 }
