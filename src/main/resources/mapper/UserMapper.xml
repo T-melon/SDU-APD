@@ -5,6 +5,10 @@
         SELECT * FROM user_info where username = #{username}
     </select>
 
+    <select id="selectEmailByUsername" resultType="String" parameterType="String">
+        SELECT email FROM user_info where username = #{username}
+    </select>
+
     <insert id="insertUser" parameterType="com.wzt.tapm.entity.UserBean">
        INSERT INTO user_info(username,password,email,`identity`) values (#{username},#{password},#{email},#{identity})
     </insert>

@@ -13,4 +13,5 @@ public interface UserMapper {
     int updatePasswordByUsername(String new_password, String username);
     Map<Integer,Object> selectUserInfoByUsername(String username);
     List<String> selectTechnicalName();
+    String selectEmailByUsername(String username);
 }
