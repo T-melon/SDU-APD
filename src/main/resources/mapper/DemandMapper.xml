@@ -7,11 +7,11 @@
     </insert>
 
     <select id="select1DoingDemand" resultType="map" parameterType="String">
-        SELECT * FROM demand_info where (cer = #{username} and status = 2) or (doer = #{username} and status = 4) or (doer = #{username} and status = 1)
+        SELECT * FROM demand_info where (cer = #{username} and status = 2) or (cer = #{username} and status = 4) or (cer = #{username} and status = 1)
     </select>
 
     <select id="select1DoneDemand" resultType="map" parameterType="String">
-        SELECT * FROM demand_info where (cer = #{username} and status = 5) or (doer = #{username} and status = 6) or (doer = #{username} and status = 3)
+        SELECT * FROM demand_info where (cer = #{username} and status = 5) or (cer = #{username} and status = 6) or (cer = #{username} and status = 3)
     </select>
 
     <select id="select2DoingDemand" resultType="map" parameterType="String">
