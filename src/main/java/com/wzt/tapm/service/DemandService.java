@@ -236,13 +236,21 @@ public class DemandService {
         return result;
     }
 
-    public Result setAddress(String address, String demand_id){
+    public Result setAddress(String commit, String address, String demand_id){
 
         Result result;
 
-        int num = demandMapper.updateAddress(address, demand_id);
+        LogBean logBean = new LogBean();
+        logBean.setCer(JWT.decode(token).getAudience().get(0));
+        logBean.setCtime(new Date().toString());
+        logBean.setCommit(commit);
+        logBean.setDemand_id(Integer.parseInt(demand_id));
+        logBean.setProject(demandMapper.selectProject(demand_id));
 
-        if(num>0){
+        int num1 = demandMapper.updateAddress(address, demand_id);
+        int num2 = demandMapper.insertLog(logBean);
+
+        if(num1>0 && num2>0){
             result = Result.getResult(ResultCodeEnum.SUCCESS);
         }else{
             result = Result.getResult(ResultCodeEnum.UNKNOWN_REASON);

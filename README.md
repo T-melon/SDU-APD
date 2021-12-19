@@ -255,6 +255,7 @@ SDU scrum platform
 
 | 传入参数 |  类型  | 是否可空 |      说明      |
 | :------: | :----: | :------: | :------------: |
+|  commit   | String |    否    | log内容 |
 | address  | String |    否    | github提交地址 |
 | demand_id  | int  |    否    |  需求id  |
 

@@ -60,8 +60,8 @@ public class DemandController {
 
     @UserLoginToken
     @PostMapping("/demand/github")
-    public Result setAddress(String address, String demand_id) {
-        return demandService.setAddress(address, demand_id);
+    public Result setAddress(String commit, String address, String demand_id) {
+        return demandService.setAddress(commit, address, demand_id);
     }
 
     @UserLoginToken
