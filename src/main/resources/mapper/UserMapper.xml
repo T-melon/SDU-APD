@@ -17,7 +17,7 @@
         SELECT username,email,`identity`  FROM user_info where username = #{username}
     </select>
 
-    <select id="selectTechnicalName" resultType="map">
+    <select id="selectTechnicalName" resultType="java.lang.String">
         SELECT username FROM user_info where `identity` = 2
     </select>
 
