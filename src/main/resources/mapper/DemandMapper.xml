@@ -22,27 +22,51 @@
         SELECT * FROM demand_info where (doer = #{username} and status = 5) or (doer = #{username} and status = 6) or (doer = #{username} and status = 3)
     </select>
 
-    <select id="select1Num" resultType="int" parameterType="String">
+    <select id="select1Num1" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where cer = #{username} and status = 1
+    </select>
+
+    <select id="select2Num1" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where cer = #{username} and status = 2
+    </select>
+
+    <select id="select3Num1" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where cer = #{username} and status = 3
+    </select>
+
+    <select id="select4Num1" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where cer = #{username} and status = 4
+    </select>
+
+    <select id="select5Num1" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where cer = #{username} and status = 5
+    </select>
+
+    <select id="select6Num1" resultType="int" parameterType="String">
+         SELECT COUNT(*) FROM demand_info where cer = #{username} and status = 6
+    </select>
+
+    <select id="select1Num2" resultType="int" parameterType="String">
          SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 1
     </select>
 
-    <select id="select2Num" resultType="int" parameterType="String">
+    <select id="select2Num2" resultType="int" parameterType="String">
          SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 2
     </select>
 
-    <select id="select3Num" resultType="int" parameterType="String">
+    <select id="select3Num2" resultType="int" parameterType="String">
          SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 3
     </select>
 
-    <select id="select4Num" resultType="int" parameterType="String">
+    <select id="select4Num2" resultType="int" parameterType="String">
          SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 4
     </select>
 
-    <select id="select5Num" resultType="int" parameterType="String">
+    <select id="select5Num2" resultType="int" parameterType="String">
          SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 5
     </select>
 
-    <select id="select6Num" resultType="int" parameterType="String">
+    <select id="select6Num2" resultType="int" parameterType="String">
          SELECT COUNT(*) FROM demand_info where doer = #{username} and status = 6
     </select>
 

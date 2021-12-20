@@ -97,12 +97,16 @@ public class DemandService {
 
     public Result getDemandNum(){
         Result result;
-        int i1 = demandMapper.select1Num(JWT.decode(token).getAudience().get(0));
-        int i2 = demandMapper.select2Num(JWT.decode(token).getAudience().get(0));
-        int i3 = demandMapper.select3Num(JWT.decode(token).getAudience().get(0));
-        int i4 = demandMapper.select4Num(JWT.decode(token).getAudience().get(0));
-        int i5 = demandMapper.select5Num(JWT.decode(token).getAudience().get(0));
-        int i6 = demandMapper.select6Num(JWT.decode(token).getAudience().get(0));
+
+        int identity = demandMapper.selectIdentity(JWT.decode(token).getAudience().get(0));
+        if (identity == 1) {
+
+            int i1 = demandMapper.select1Num1(JWT.decode(token).getAudience().get(0));
+            int i2 = demandMapper.select2Num1(JWT.decode(token).getAudience().get(0));
+            int i3 = demandMapper.select3Num1(JWT.decode(token).getAudience().get(0));
+            int i4 = demandMapper.select4Num1(JWT.decode(token).getAudience().get(0));
+            int i5 = demandMapper.select5Num1(JWT.decode(token).getAudience().get(0));
+            int i6 = demandMapper.select6Num1(JWT.decode(token).getAudience().get(0));
 //        List<Integer> list = new List<>() {
 //            @Override
 //            public int size() {
@@ -229,9 +233,149 @@ public class DemandService {
 //        采用List报错org.springframework.http.converter.HttpMessageNotWritableException:
 //        Could not write JSON: (was java.lang.NullPointerException); nested exception is com.fasterxml.jackson.databind.
 //        data返回暂时改成String
-        String str = "i1="+i1+", i2="+i2+", i3="+i3+", i4="+i4+", i5="+i5+", i6="+i6;
+            String str = "i1=" + i1 + ", i2=" + i2 + ", i3=" + i3 + ", i4=" + i4 + ", i5=" + i5 + ", i6=" + i6;
 
-        result = Result.getResult(ResultCodeEnum.SUCCESS,str);
+            result = Result.getResult(ResultCodeEnum.SUCCESS, str);
+
+        }else{
+
+            int i1 = demandMapper.select1Num2(JWT.decode(token).getAudience().get(0));
+            int i2 = demandMapper.select2Num2(JWT.decode(token).getAudience().get(0));
+            int i3 = demandMapper.select3Num2(JWT.decode(token).getAudience().get(0));
+            int i4 = demandMapper.select4Num2(JWT.decode(token).getAudience().get(0));
+            int i5 = demandMapper.select5Num2(JWT.decode(token).getAudience().get(0));
+            int i6 = demandMapper.select6Num2(JWT.decode(token).getAudience().get(0));
+//        List<Integer> list = new List<>() {
+//            @Override
+//            public int size() {
+//                return 0;
+//            }
+//
+//            @Override
+//            public boolean isEmpty() {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean contains(Object o) {
+//                return false;
+//            }
+//
+//            @Override
+//            public Iterator<Integer> iterator() {
+//                return null;
+//            }
+//
+//            @Override
+//            public Object[] toArray() {
+//                return new Object[0];
+//            }
+//
+//            @Override
+//            public <T> T[] toArray(T[] a) {
+//                return null;
+//            }
+//
+//            @Override
+//            public boolean add(Integer integer) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean remove(Object o) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean containsAll(Collection<?> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean addAll(Collection<? extends Integer> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean addAll(int index, Collection<? extends Integer> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean removeAll(Collection<?> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean retainAll(Collection<?> c) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void clear() {
+//
+//            }
+//
+//            @Override
+//            public Integer get(int index) {
+//                return null;
+//            }
+//
+//            @Override
+//            public Integer set(int index, Integer element) {
+//                return null;
+//            }
+//
+//            @Override
+//            public void add(int index, Integer element) {
+//
+//            }
+//
+//            @Override
+//            public Integer remove(int index) {
+//                return null;
+//            }
+//
+//            @Override
+//            public int indexOf(Object o) {
+//                return 0;
+//            }
+//
+//            @Override
+//            public int lastIndexOf(Object o) {
+//                return 0;
+//            }
+//
+//            @Override
+//            public ListIterator<Integer> listIterator() {
+//                return null;
+//            }
+//
+//            @Override
+//            public ListIterator<Integer> listIterator(int index) {
+//                return null;
+//            }
+//
+//            @Override
+//            public List<Integer> subList(int fromIndex, int toIndex) {
+//                return null;
+//            }
+//        };
+//        list.add(0,i1);
+//        list.add(1,i2);
+//        list.add(2,i3);
+//        list.add(3,i4);
+//        list.add(4,i5);
+//        list.add(5,i6);
+
+//        采用List报错org.springframework.http.converter.HttpMessageNotWritableException:
+//        Could not write JSON: (was java.lang.NullPointerException); nested exception is com.fasterxml.jackson.databind.
+//        data返回暂时改成String
+            String str = "i1=" + i1 + ", i2=" + i2 + ", i3=" + i3 + ", i4=" + i4 + ", i5=" + i5 + ", i6=" + i6;
+
+            result = Result.getResult(ResultCodeEnum.SUCCESS, str);
+
+        }
 
         return result;
     }
