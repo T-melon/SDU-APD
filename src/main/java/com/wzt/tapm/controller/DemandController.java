@@ -4,12 +4,15 @@ import com.wzt.tapm.entity.DemandBean;
 import com.wzt.tapm.service.DemandService;
 import com.wzt.tapm.util.Result;
 import com.wzt.tapm.util.annotation.UserLoginToken;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.apache.http.entity.ContentType;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -66,7 +69,13 @@ public class DemandController {
 
     @UserLoginToken
     @PostMapping("/demand/upload")
-    public Result setDocu(@RequestParam("uploadFile") MultipartFile uploadFile, @RequestParam("demand_id") String demand_id, HttpServletRequest request) throws IOException {
+    public Result setDocu(@RequestParam("uploadFile") File uploadFile, @RequestParam("demand_id") String demand_id, HttpServletRequest request) throws IOException {
+
+        File file = new File(String.valueOf(uploadFile));
+        FileInputStream fileInputStream = new FileInputStream(file);
+        MultipartFile multipartFile = new MockMultipartFile("copy"+file.getName(),file.getName(),ContentType.APPLICATION_OCTET_STREAM.toString(),fileInputStream);
+
+
         //定义上传文件存放的路径
         String path = request.getSession().getServletContext().getRealPath("/uploadFile/");//此处为tomcat下的路径,服务重启路径会变化
         //定义文件在上传路径中的文件夹名称
@@ -86,13 +95,13 @@ public class DemandController {
             }
         }
         //获取文件的原始名称
-        String oldName = uploadFile.getOriginalFilename();
+        String oldName = multipartFile.getOriginalFilename();
         //oldName.substring(oldName.lastIndexOf("."))获取文件的后缀名
         //生成新的文件名(下面根据自己需要决定是否使用)
         //String newName ="定义新名字" + oldName.substring(oldName.lastIndexOf("."));
         //文件保存操作
         if (oldName != null)
-            uploadFile.transferTo(new File(folder, oldName));
+            multipartFile.transferTo(new File(folder, oldName));
         //返回保存的url,根据url可以进行文件查看或者下载
         String filePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/uploadFile/" + demand_id + "/" + oldName;
 
